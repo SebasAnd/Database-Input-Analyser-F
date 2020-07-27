@@ -66,7 +66,7 @@ export class ManageDbComponent implements OnInit {
 
     this._success.subscribe(message => this.successMessage = message);
     this._success.pipe(
-      debounceTime(2000)
+      debounceTime(4000)
     ).subscribe(() => this.successMessage = '');
   }
 
