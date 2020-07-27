@@ -11,6 +11,16 @@
 <div class = "space_between"></div>
 <div> Separador: <input [(ngModel)]="separator_input" type="text" placeholder="ingrese el separador"> </div>
 <div class = "space_between"></div>
+<div>
+  <mat-label>Algunas opciones</mat-label>
+  <select matNativeControl [(ngModel)]="separator_input" name="car">
+    <option value="" selected></option>
+    <option *ngFor="let opt of some_ptions" [value]="opt.value">
+      {{opt.viewValue}}
+    </option>
+  </select>
+</div>
+<div class = "space_between"></div>
 <div><button  (click)="handleFileInput()">Cargar</button></div>
 
 

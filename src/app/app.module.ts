@@ -13,6 +13,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { ShowdbComponent } from './showdb/showdb.component';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -31,6 +32,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatButtonToggleModule,
     MatToolbarModule,
     MatIconModule,
+    MatSelectModule,
     FormsModule,
     NgbModule
   ],

@@ -4,6 +4,11 @@ import{ConectionService } from '../conection.service';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 
+interface Input {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-manage-db.component',
   templateUrl: './manage-db.component.html',
@@ -34,8 +39,12 @@ export class ManageDbComponent implements OnInit {
   successMessage = '';
   public type: string;
   private _success = new Subject<string>();
-
-  
+  some_ptions: Input[] = [
+    {value: '.', viewValue: 'punto'},
+    {value: ',', viewValue: 'coma'},
+    {value: '  ', viewValue: 'espacio'},
+    {value: '%', viewValue: 'porcentaje'}
+  ]; 
 
   private look_area :boolean;
   constructor(
@@ -70,11 +79,11 @@ export class ManageDbComponent implements OnInit {
     ).subscribe(() => this.successMessage = '');
   }
 
-  public alertMessage(type,message) {
+  alertMessage(type,message) {
     this.type =type;
     this._success.next(message);
   }
-  
+
   showDb(file):String[][]{
     var array_information = [];
     var lines = file.split('\n');  
@@ -254,7 +263,6 @@ export class ManageDbComponent implements OnInit {
   handleFileInput( ):void{
     
     const reader = new FileReader();
-    console.log(this.event_input);
     if(this.event_input == undefined){
       this.alertMessage('danger','No se selecciono ningun archivo');
     }
@@ -281,11 +289,12 @@ export class ManageDbComponent implements OnInit {
           for(let r = 0 ; r < tem_information.length;r++){
             if (tem_information[r].length < max_columns){
               for(let n = 0 ; n < max_columns - tem_information[r].length;n++){
-                tem_information[r].push("-");
+                tem_information[r].push('');
 
               }
             }
           }
+          console.log(tem_information);
           this.tableDb = tem_information;
           this.gridcss = [];
           for(let i = 0; i < this.information; i++){
