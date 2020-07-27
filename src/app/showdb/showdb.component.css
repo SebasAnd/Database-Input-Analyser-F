@@ -1,0 +1,41 @@
+td.clasiccell{
+    background-color: white;
+    border: 1px solid black;
+  }
+th.clasiccell{
+    background-color: #4e6096;
+    color: white;
+    border: 1px solid black;
+}
+  table.main-table{
+    width: 100%;
+    border-radius:10px;
+    margin-top: 1.5%;
+  }
+  button {
+	background-color:#7892c2;
+	border-radius:2px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:10px 20px;
+}
+button {
+	background-color:#476e9e;
+}
+button {
+	position:relative;
+	top:1px;
+}
+.select_zone{
+    display: flex;
+
+    height: 10%;
+    width: 100%;
+  }
+  .input-campaña{
+    width: 200px;
+  }

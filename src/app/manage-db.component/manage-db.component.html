@@ -1,0 +1,85 @@
+
+<div class="file_zone">
+  <label for="file">Elige un archivo </label>
+<input type="file" (change)="handleFileInput($event)">
+
+</div>
+
+
+
+<div *ngIf="!look_area">
+
+<div ngif = "tableDb">
+  <div class= "grid_container">
+  <div class="first_half">Nombre: 
+
+  </div>
+  <div class="second_half">
+  <mat-button-toggle-group ngif = "tableDb"  multiple [value]="[]"
+  
+  class="example-sticky-toggle-group">
+  <mat-button-toggle class="{{ gridcss[0][indexr] }}" value="indexr" ngif = "tableDb[0]" *ngFor="let element of tableDb[0];let indexr=index" (change)="columnselected('nombre',indexr)" disabled ="{{nombre[indexr]}}" ><div style="height: 45%;"></div><div style="height: 10%;" flex>columna {{indexr + 1}}</div></mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+<div class="codigo-campaña">
+  Codigo de campaña: <input class="input-campaña" [(ngModel)]="codigo_camp" placeholder="ingrese el codigo de campaña">
+</div>
+</div>
+</div>
+<div ngif = "tableDb">
+  <div class= "grid_container">
+
+    <div class="first_half">Apellidos:</div>
+    <div class="second_half">
+
+  <mat-button-toggle-group ngif = "tableDb != undefined && tableDb != null"  multiple [value]="[]"
+  
+  class="example-sticky-toggle-group">
+  <mat-button-toggle class="{{ gridcss[1][indexr] }}" value="indexr" ngif = "tableDb[0]" *ngFor="let element of tableDb[0];let indexr=index" (change)="columnselected('apellido',indexr)" disabled ="{{apellido[indexr]}}"> columna {{indexr + 1}} </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+<div>
+<button (click)="createElement()">crear</button>
+</div>
+</div>
+</div>
+<div ngif = "tableDb">
+  <div class= "grid_container">
+    <div class="first_half">Telefonos:</div>
+
+    <div class="second_half">
+  
+  <mat-button-toggle-group ngif = "tableDb != undefined && tableDb != null"  multiple [value]="[]"
+  
+  class="example-sticky-toggle-group">
+  <mat-button-toggle class="{{ gridcss[2][indexr] }}" value="indexr" ngif = "tableDb[0]" *ngFor="let element of tableDb[0];let indexr=index" (change)="columnselected('telefono',indexr)" disabled ="{{telefono[indexr]}}" > columna {{indexr + 1}} </mat-button-toggle>
+  </mat-button-toggle-group>
+  </div>
+</div>
+</div>
+<div ngif = "tableDb">
+  <div class= "grid_container">
+    <div class="first_half">Direcciones:</div>
+    <div class="second_half">
+  
+  <mat-button-toggle-group ngif = "tableDb != undefined && tableDb != null"  multiple [value]="[]"
+  
+  class="example-sticky-toggle-group">
+  <mat-button-toggle class="{{ gridcss[3][indexr] }}" value="indexr" ngif = "tableDb[0]" *ngFor="let element of tableDb[0];let indexr=index" (change)="columnselected('direccion',indexr)"disabled ="{{direccion[indexr]}}"> columna {{indexr + 1}} </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+</div>
+</div>
+
+
+
+
+
+</div>
+<table class="main-table" *ngIf="!look_area" >
+    <tbody>
+        <tr *ngFor="let contain of tableDb ">
+          <td class= "{{ tablecss[indexc] }}"ngif = "contain != null" *ngFor="let column of contain  ; let indexc = index">{{column}}</td>
+        </tr>
+        </tbody>
+</table>

@@ -1,0 +1,23 @@
+
+<div class="select_zone">
+    <div style="width: 23%;">
+        Buscar por codigo: <input class= "input-campaña" [(ngModel)]="code" placeholder="ingrese el codigo de campaña"> 
+    </div>
+    <div style="width: 10%; ">
+        <button (click)="search()">Buscar</button>
+    </div>
+</div>
+<table class="main-table" *ngIf="!visible">
+    <tbody>
+        <tr><th class= "clasiccell">Nombre</th>
+            <th class= "clasiccell">Apellido</th>
+            <th class= "clasiccell">Telefono</th>
+            <th class= "clasiccell">Direccion</th></tr>
+        <tr ngif="dbtable" *ngFor="let contain of dbtable">
+          <td class= "clasiccell" ngif = "contain" >{{contain.nombres}}</td>
+          <td class= "clasiccell" ngif = "contain" >{{contain.apellidos}}</td>
+          <td class= "clasiccell"ngif = "contain" >{{contain.telefonos}}</td>
+          <td class= "clasiccell"ngif = "contain" >{{contain.direcciones}}</td>
+        </tr>
+        </tbody>
+</table>
