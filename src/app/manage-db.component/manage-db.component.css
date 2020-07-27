@@ -26,8 +26,16 @@ td.direccion{
   border: 1px solid black; 
 }
 .file_zone{
-  height: 10%;
+  display: flex;
+  height: 8%;
   
+}
+.left_space_input{
+  width: 2%;
+
+}
+.left_space_grid{
+  width: 3%;
 }
 
 .grid_container{
@@ -57,6 +65,9 @@ td.direccion{
 table.main-table{
   margin-top: 5%;
   border: 1px solid black; 
+}
+.space_between{
+  width: 1%;
 }
 
 mat-button-toggle.nombre{

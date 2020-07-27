@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { ShowdbComponent } from './showdb/showdb.component';
 import {MatIconModule} from '@angular/material/icon';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonToggleModule,
     MatToolbarModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   exports: [
     MatToolbarModule,

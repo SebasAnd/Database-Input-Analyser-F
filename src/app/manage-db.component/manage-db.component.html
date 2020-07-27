@@ -1,9 +1,21 @@
+<div>
+  <ngb-alert *ngIf="successMessage" type="{{type}}" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+</div>
 
 <div class="file_zone">
+  <div class="left_space_input"></div>
+  <div>
   <label for="file">Elige un archivo </label>
-<input type="file" (change)="handleFileInput($event)">
+  
+<input type="file" (change) = "file_change($event)"> </div>
+<div class = "space_between"></div>
+<div> Separador: <input [(ngModel)]="separator_input" type="text" placeholder="ingrese el separador"> </div>
+<div class = "space_between"></div>
+<div><button  (click)="handleFileInput()">Cargar</button></div>
+
 
 </div>
+
 
 
 
@@ -11,6 +23,7 @@
 
 <div ngif = "tableDb">
   <div class= "grid_container">
+    <div class="left_space_grid"></div>
   <div class="first_half">Nombre: 
 
   </div>
@@ -28,7 +41,7 @@
 </div>
 <div ngif = "tableDb">
   <div class= "grid_container">
-
+    <div class="left_space_grid"></div>
     <div class="first_half">Apellidos:</div>
     <div class="second_half">
 
@@ -45,6 +58,7 @@
 </div>
 <div ngif = "tableDb">
   <div class= "grid_container">
+    <div class="left_space_grid"></div>
     <div class="first_half">Telefonos:</div>
 
     <div class="second_half">
@@ -59,6 +73,7 @@
 </div>
 <div ngif = "tableDb">
   <div class= "grid_container">
+    <div class="left_space_grid"></div>
     <div class="first_half">Direcciones:</div>
     <div class="second_half">
   

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, IterableDiffers } from '@angular/core';
 
 import{ConectionService } from '../conection.service';
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-manage-db.component',
@@ -26,6 +28,14 @@ export class ManageDbComponent implements OnInit {
   private direccioncolumnid: Number[];
 
   private information :number;
+  public separator_input :String;
+  public event_input:any;
+  staticAlertClosed = false;
+  successMessage = '';
+  public type: string;
+  private _success = new Subject<string>();
+
+  
 
   private look_area :boolean;
   constructor(
@@ -48,21 +58,35 @@ export class ManageDbComponent implements OnInit {
     this.gridcss =[];
     this.tablecss  = [];
     this.information = 4;
+    this.separator_input = '';
    }
 
   ngOnInit() {
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+
+    this._success.subscribe(message => this.successMessage = message);
+    this._success.pipe(
+      debounceTime(2000)
+    ).subscribe(() => this.successMessage = '');
   }
+
+  public alertMessage(type,message) {
+    this.type =type;
+    this._success.next(message);
+  }
+  
   showDb(file):String[][]{
     var array_information = [];
     var lines = file.split('\n');  
       for(var i = 0; i < lines.length; i++){
-        if(lines[i].includes("  ")){
+        /*if(lines[i].includes("  ")){
         array_information.push(lines[i].split(/[/\s+/]+?[/\s+/]/));
        
         }else{
           array_information.push(lines[i].split(/[/,.%/]/));
   
-        }
+        }*/
+        array_information.push(lines[i].split(this.separator_input));
       }      
       return array_information; 
   }
@@ -198,7 +222,7 @@ export class ManageDbComponent implements OnInit {
     }
 
     if(this.codigo_camp == ""||this.codigo_camp== "null"||this.codigo_camp== "undefined"){
-      alert("Debe ingresar el codigo de campaña");
+      this.alertMessage('danger',"Debe ingresar el codigo de campaña");
     }
     else{
       /*if(this.nombrecolumnid.length == 0 || this.apellidocolumnid .length == 0 ||this.telefonocolumnid.length == 0||this.direccioncolumnid.length == 0){
@@ -215,7 +239,7 @@ export class ManageDbComponent implements OnInit {
         }
 
         this.Conection.saveDb(jsonreturn).subscribe((response) => {
-          alert(response.message);
+          this.alertMessage('success',response.message);
         });
         this.cleanGrid();
       //}
@@ -223,19 +247,30 @@ export class ManageDbComponent implements OnInit {
     
 
   }
+  file_change(event: any):void{
+      this.event_input = event;
+  }
   
-  handleFileInput(input :any ):void{
-    this.look_area = false;
+  handleFileInput( ):void{
+    
     const reader = new FileReader();
-
-    if (input.target.files && input.target.files.length) {
-      const [file] = input.target.files;
+    console.log(this.event_input);
+    if(this.event_input == undefined){
+      this.alertMessage('danger','No se selecciono ningun archivo');
+    }
+    if(this.separator_input == ''){
+      this.alertMessage('danger','No se ha escrito el separador para la informacion');
+    }
+    else{
+    if (this.event_input.target.files && this.event_input.target.files.length) {
+      this.look_area = false;
+      const [file] = this.event_input.target.files;
       reader.readAsDataURL(file);
       reader.onload = () => {
           let file = ''+reader.result;
           let text = atob(file.split(',')[1]);
           let tem_information = this.showDb(text);
-
+          
           let max_columns = 0;
 
           for(let t = 0 ; t < tem_information.length;t++){
@@ -278,6 +313,8 @@ export class ManageDbComponent implements OnInit {
           this.cleanGrid();
           
       }
+    }
+      
     }
 
   }
