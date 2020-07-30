@@ -41,7 +41,7 @@
   <mat-button-toggle-group ngif = "tableDb"  multiple [value]="[]"
   
   class="example-sticky-toggle-group">
-  <mat-button-toggle class="{{ gridcss[0][indexr] }}" value="indexr" ngif = "tableDb[0]" *ngFor="let element of tableDb[0];let indexr=index" (change)="columnselected('nombre',indexr)" disabled ="{{nombre[indexr]}}" ><div style="height: 45%;"></div><div style="height: 10%;" flex>columna {{indexr + 1}}</div></mat-button-toggle>
+  <mat-button-toggle class="{{ gridcss[0][indexr] }}" value="indexr" ngif = "first_element" *ngFor="let element of first_element;let indexr=index" (change)="columnselected('nombre',indexr)" disabled ="{{nombre[indexr]}}" ><div style="height: 45%;"></div><div style="height: 10%;" flex>columna {{indexr + 1}}</div></mat-button-toggle>
   </mat-button-toggle-group>
 </div>
 <div class="codigo-campaña">
@@ -55,10 +55,10 @@
     <div class="first_half">Apellidos:</div>
     <div class="second_half">
 
-  <mat-button-toggle-group ngif = "tableDb != undefined && tableDb != null"  multiple [value]="[]"
+  <mat-button-toggle-group ngif = "tableDb"  multiple [value]="[]"
   
   class="example-sticky-toggle-group">
-  <mat-button-toggle class="{{ gridcss[1][indexr] }}" value="indexr" ngif = "tableDb[0]" *ngFor="let element of tableDb[0];let indexr=index" (change)="columnselected('apellido',indexr)" disabled ="{{apellido[indexr]}}"> columna {{indexr + 1}} </mat-button-toggle>
+  <mat-button-toggle class="{{ gridcss[1][indexr] }}" value="indexr" ngif = "first_element" *ngFor="let element of first_element;let indexr=index" (change)="columnselected('apellido',indexr)" disabled ="{{apellido[indexr]}}"> columna {{indexr + 1}} </mat-button-toggle>
   </mat-button-toggle-group>
 </div>
 <div>
@@ -73,10 +73,10 @@
 
     <div class="second_half">
   
-  <mat-button-toggle-group ngif = "tableDb != undefined && tableDb != null"  multiple [value]="[]"
+  <mat-button-toggle-group ngif = "tableDb"  multiple [value]="[]"
   
   class="example-sticky-toggle-group">
-  <mat-button-toggle class="{{ gridcss[2][indexr] }}" value="indexr" ngif = "tableDb[0]" *ngFor="let element of tableDb[0];let indexr=index" (change)="columnselected('telefono',indexr)" disabled ="{{telefono[indexr]}}" > columna {{indexr + 1}} </mat-button-toggle>
+  <mat-button-toggle class="{{ gridcss[2][indexr] }}" value="indexr" ngif = "first_element" *ngFor="let element of first_element;let indexr=index" (change)="columnselected('telefono',indexr)" disabled ="{{telefono[indexr]}}" > columna {{indexr + 1}} </mat-button-toggle>
   </mat-button-toggle-group>
   </div>
 </div>
@@ -87,10 +87,10 @@
     <div class="first_half">Direcciones:</div>
     <div class="second_half">
   
-  <mat-button-toggle-group ngif = "tableDb != undefined && tableDb != null"  multiple [value]="[]"
+  <mat-button-toggle-group ngif = "tableDb"  multiple [value]="[]"
   
   class="example-sticky-toggle-group">
-  <mat-button-toggle class="{{ gridcss[3][indexr] }}" value="indexr" ngif = "tableDb[0]" *ngFor="let element of tableDb[0];let indexr=index" (change)="columnselected('direccion',indexr)"disabled ="{{direccion[indexr]}}"> columna {{indexr + 1}} </mat-button-toggle>
+  <mat-button-toggle class="{{ gridcss[3][indexr] }}" value="indexr" ngif = "first_element" *ngFor="let element of first_element;let indexr=index" (change)="columnselected('direccion',indexr)"disabled ="{{direccion[indexr]}}"> columna {{indexr + 1}} </mat-button-toggle>
   </mat-button-toggle-group>
 </div>
 </div>

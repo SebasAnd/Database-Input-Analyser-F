@@ -47,6 +47,8 @@ export class ManageDbComponent implements OnInit {
   ]; 
 
   private look_area :boolean;
+
+  private first_element: String[];
   constructor(
     private Conection: ConectionService,
   ) {
@@ -68,6 +70,8 @@ export class ManageDbComponent implements OnInit {
     this.tablecss  = [];
     this.information = 4;
     this.separator_input = '';
+    this.tableDb = [];
+    this.first_element = [];
    }
 
   ngOnInit() {
@@ -294,8 +298,8 @@ export class ManageDbComponent implements OnInit {
               }
             }
           }
-          console.log(tem_information);
           this.tableDb = tem_information;
+          this.first_element = this.tableDb[0];
           this.gridcss = [];
           for(let i = 0; i < this.information; i++){
             let array_constructor = [];
